@@ -10,10 +10,7 @@ A [QuPath](https://qupath.github.io) extension for running [Segment Anything Mod
 - A **SAM HTTP API server** on your network (usually on the same PC as QuPath). The extension defaults to something like `http://localhost:8000/sam/` in preferences.
 
 This repo includes a **conda environment** (`samapi-env/`) that matches Sai’s working server setup on **Linux with an NVIDIA GPU (CUDA 12.x)**.
-conda create -n samapi -y python=3.12
-conda activate samapi
-python -m pip install -U pip
-python -m pip install git+https://github.com/ksugar/samapi.git
+
 ---
 
 ## 1. SAM API server (conda, easy path)
@@ -27,6 +24,13 @@ python -m pip install git+https://github.com/ksugar/samapi.git
 ### Create the environment
 
 From the folder that contains `samapi-env` (the same folder as this `README.md`):
+```bash
+conda create -n samapi -y python=3.12
+conda activate samapi
+python -m pip install -U pip
+python -m pip install git+https://github.com/ksugar/samapi.git
+
+```
 
 ```bash
 cd samapi-env
@@ -41,7 +45,7 @@ That creates an environment named **`samapi`** with Python 3.12 and all Python d
 With `samapi` activated:
 
 ```bash
-uvicorn samapi.main:app --workers 2
+uvicorn samapi.main:app --workers 2 or uvicorn samapi.main:app --workers 2 --port 8000
 ```
 
 The server listens on **http://127.0.0.1:8000** by default. The QuPath extension expects the SAM base path **`http://localhost:8000/sam/`** (include the `/sam/` part in the extension dialog if your build expects it).
