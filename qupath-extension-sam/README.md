@@ -1,6 +1,6 @@
 # QuPath SAM extension
 
-**Maintainer / this copy:** Sai  
+
 
 A [QuPath](https://qupath.github.io) extension for running [Segment Anything Model (SAM)](https://segment-anything.com/)–style segmentation from the viewer.
 
@@ -10,7 +10,10 @@ A [QuPath](https://qupath.github.io) extension for running [Segment Anything Mod
 - A **SAM HTTP API server** on your network (usually on the same PC as QuPath). The extension defaults to something like `http://localhost:8000/sam/` in preferences.
 
 This repo includes a **conda environment** (`samapi-env/`) that matches Sai’s working server setup on **Linux with an NVIDIA GPU (CUDA 12.x)**.
-
+conda create -n samapi -y python=3.12
+conda activate samapi
+python -m pip install -U pip
+python -m pip install git+https://github.com/ksugar/samapi.git
 ---
 
 ## 1. SAM API server (conda, easy path)
