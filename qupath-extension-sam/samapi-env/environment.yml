@@ -1,0 +1,10 @@
+# SAM API backend for the QuPath SAM extension (matches Sai's conda env layout).
+# Target: Linux x86_64 with NVIDIA GPU (CUDA 12.x wheels from PyTorch).
+name: samapi
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+    - -r requirements-samapi.txt
